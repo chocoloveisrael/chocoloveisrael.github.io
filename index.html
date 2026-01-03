@@ -224,33 +224,42 @@
 <script>
   const v = document.querySelector('.heroVideo');
 
-  async function tryPlay() {
+  async function forcePlay() {
     if (!v) return;
     v.muted = true;
-    try { await v.play(); } catch (e) { /* autoplay may be blocked */ }
+    try { await v.play(); } catch (e) {}
   }
 
-  window.addEventListener('load', tryPlay);
-  window.addEventListener('pageshow', tryPlay);            // when returning back
+  // Try immediately
+  window.addEventListener('load', forcePlay);
+  window.addEventListener('pageshow', forcePlay);
+
+  // If autoplay is blocked in an in-app browser, start on the first user gesture
+  ['touchstart','click','scroll'].forEach(ev => {
+    document.addEventListener(ev, forcePlay, { once: true, passive: true });
+  });
+
+  // Helpful when returning to the tab
   document.addEventListener('visibilitychange', () => {
-    if (!document.hidden) tryPlay();
+    if (!document.hidden) forcePlay();
   });
 </script>
+
 
 <body>
   <main class="wrap">
     <section class="card" aria-label="Digital business card">
       <header class="hero">
-      <video class="heroVideo"
+     <video class="heroVideo"
        autoplay
        muted
        loop
        playsinline
        webkit-playsinline
-       preload="auto"
-       poster="hero-vertical.jpg">
+       preload="auto">
   <source src="chocovideo.mp4" type="video/mp4">
 </video>
+
 
 
         <div class="top">
