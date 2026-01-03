@@ -219,30 +219,40 @@
       background: linear-gradient(90deg, var(--gold), var(--gold2));
       box-shadow: 0 0 18px #d6b25e66;
     }
+
+    .footerCredit{
+  margin-top: 14px;
+  text-align:center;
+  color: var(--muted);
+  font-size: 12px;
+  opacity: .95;
+}
+.footerCredit a{
+  color: #f2df9a;
+  text-decoration: none;
+  border-bottom: 1px solid #ffffff22;
+}
+.footerCredit a:hover{ opacity:.9; }
+
   </style>
 </head>
 <script>
   const v = document.querySelector('.heroVideo');
-
-  async function startVideo() {
-    if (!v) return;
+  async function playNow(){
+    if(!v) return;
     v.muted = true;
     try { await v.play(); } catch(e) {}
   }
+  window.addEventListener('load', playNow);
+  window.addEventListener('pageshow', playNow);
+  document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) playNow(); });
 
-  // try immediately (works in normal browsers)
-  window.addEventListener('load', startVideo);
-  window.addEventListener('pageshow', startVideo);
-
-  // WhatsApp in-app: start on first user gesture (tap/scroll)
-  ['touchstart','click','scroll'].forEach(ev => {
-    document.addEventListener(ev, startVideo, { once: true, passive: true });
-  });
-
-  document.addEventListener('visibilitychange', () => {
-    if (!document.hidden) startVideo();
+  // WhatsApp in-app often needs a gesture — start on first touch/scroll
+  ['touchstart','click','scroll'].forEach(ev=>{
+    document.addEventListener(ev, playNow, { once:true, passive:true });
   });
 </script>
+
 
 
 
@@ -250,7 +260,12 @@
   <main class="wrap">
     <section class="card" aria-label="Digital business card">
       <header class="hero">
-     <!-- <video class="heroVideo"
+     <video class="heroVideo" autoplay muted loop playsinline webkit-playsinline preload="auto">
+  <source src="chocovideo.mp4" type="video/mp4">
+</video>
+
+
+        <!-- <video class="heroVideo"
        autoplay
        muted
        loop
@@ -259,16 +274,6 @@
        preload="auto">
   <source src="chocovideo.mp4" type="video/mp4">
 </video> -->
-
-        <video class="heroVideo"
-       autoplay
-       muted
-       loop
-       playsinline
-       webkit-playsinline
-       preload="auto">
-  <source src="chocovideo.mp4" type="video/mp4">
-</video>
 
 
 
@@ -343,6 +348,11 @@
 
         <div class="divider"></div>
       </div>
+      <div class="footerCredit">
+  © All rights reserved. Built by
+  <a href="batsi.html">Batsi Levitan</a>
+</div>
+
     </section>
   </main>
 </body>
