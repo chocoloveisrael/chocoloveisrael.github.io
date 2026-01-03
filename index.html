@@ -39,6 +39,7 @@
         radial-gradient(900px 700px at 50% 110%, #d6b25e18, transparent 55%),
         linear-gradient(180deg, #050507, #06060a);
       min-height:100vh;
+      min-height: 100svh;
       display:flex;
       justify-content:center;
       padding:18px;
@@ -234,6 +235,28 @@
 }
 .footerCredit a:hover{ opacity:.9; }
 
+
+    @media (max-width: 520px){
+  body{
+    justify-content: flex-start;  /* instead of center */
+    padding: 12px;
+  }
+  .card{
+    margin: 0 auto;              /* remove top gap */
+  }
+  .hero{
+    height: 320px;               /* smaller hero on mobile */
+  }
+  .content{
+    padding: 14px 14px 20px;     /* a bit tighter */
+  }
+  .footerCredit{
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+}
+
+
   </style>
 </head>
 <script>
@@ -260,12 +283,12 @@
   <main class="wrap">
     <section class="card" aria-label="Digital business card">
       <header class="hero">
-     <video class="heroVideo" autoplay muted loop playsinline webkit-playsinline preload="auto">
+     <!-- <video class="heroVideo" autoplay muted loop playsinline webkit-playsinline preload="auto">
   <source src="chocovideo.mp4" type="video/mp4">
-</video>
+</video> -->
 
 
-        <!-- <video class="heroVideo"
+        <video class="heroVideo"
        autoplay
        muted
        loop
@@ -273,7 +296,7 @@
        webkit-playsinline
        preload="auto">
   <source src="chocovideo.mp4" type="video/mp4">
-</video> -->
+</video>
 
 
 
