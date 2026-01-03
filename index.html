@@ -90,8 +90,10 @@
   object-fit:cover;
   transform: scale(1.02);
   filter: contrast(1.05) saturate(1.05);
+   pointer-events:none; /* מונע טאפים שמציגים UI */
 }
-
+.heroVideo::-webkit-media-controls{ display:none !important; }
+.heroVideo::-webkit-media-controls-start-playback-button{ display:none !important; }
 
     .top{
       position:absolute;
@@ -224,9 +226,16 @@
   <main class="wrap">
     <section class="card" aria-label="Digital business card">
       <header class="hero">
-        <video class="heroVideo" autoplay muted loop playsinline preload="metadata" poster="hero-vertical.jpg">
-    <source src="chocovideo.mp4" type="video/mp4">
-  </video>
+      <video class="heroVideo"
+       autoplay
+       muted
+       loop
+       playsinline
+       preload="metadata"
+       poster="hero-vertical.jpg">
+  <source src="chocovideo.mp4" type="video/mp4">
+</video>
+
         <div class="top">
           <div class="brand">
             <div class="mark" aria-hidden="true"><span>CL</span></div>
