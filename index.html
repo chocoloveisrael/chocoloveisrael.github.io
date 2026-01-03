@@ -224,33 +224,43 @@
 <script>
   const v = document.querySelector('.heroVideo');
 
-  async function forcePlay() {
+  async function startVideo() {
     if (!v) return;
     v.muted = true;
-    try { await v.play(); } catch (e) {}
+    try { await v.play(); } catch(e) {}
   }
 
-  // Try immediately
-  window.addEventListener('load', forcePlay);
-  window.addEventListener('pageshow', forcePlay);
+  // try immediately (works in normal browsers)
+  window.addEventListener('load', startVideo);
+  window.addEventListener('pageshow', startVideo);
 
-  // If autoplay is blocked in an in-app browser, start on the first user gesture
+  // WhatsApp in-app: start on first user gesture (tap/scroll)
   ['touchstart','click','scroll'].forEach(ev => {
-    document.addEventListener(ev, forcePlay, { once: true, passive: true });
+    document.addEventListener(ev, startVideo, { once: true, passive: true });
   });
 
-  // Helpful when returning to the tab
   document.addEventListener('visibilitychange', () => {
-    if (!document.hidden) forcePlay();
+    if (!document.hidden) startVideo();
   });
 </script>
+
 
 
 <body>
   <main class="wrap">
     <section class="card" aria-label="Digital business card">
       <header class="hero">
-     <video class="heroVideo"
+     <!-- <video class="heroVideo"
+       autoplay
+       muted
+       loop
+       playsinline
+       webkit-playsinline
+       preload="auto">
+  <source src="chocovideo.mp4" type="video/mp4">
+</video> -->
+
+        <video class="heroVideo"
        autoplay
        muted
        loop
@@ -259,6 +269,7 @@
        preload="auto">
   <source src="chocovideo.mp4" type="video/mp4">
 </video>
+
 
 
 
