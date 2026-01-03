@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Batsi Levitan</title>
+  <meta name="description" content="High-converting landing pages & digital cards." />
+  <style>
+    :root{ --bg:#050507; --card:#0b0b10cc; --stroke:#ffffff1a; --text:#f4f4f6; --muted:#b8b8c2; --gold:#d6b25e; --gold2:#f2df9a; }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:system-ui,-apple-system,Segoe UI,Arial; color:var(--text);
+      background: radial-gradient(900px 700px at 15% 10%, #d6b25e22, transparent 55%),
+                  radial-gradient(900px 700px at 85% 15%, #ffffff14, transparent 55%),
+                  linear-gradient(180deg, #050507, #06060a);
+      min-height:100vh; display:flex; justify-content:center; padding:18px;
+    }
+    .wrap{width:min(520px,100%)}
+    .card{
+      margin:10px auto 0; border:1px solid var(--stroke); background:var(--card);
+      backdrop-filter: blur(10px); border-radius:26px; overflow:hidden;
+      box-shadow: 0 26px 90px #000000a3;
+      padding:18px;
+    }
+    h1{margin:0; font-size:26px; letter-spacing:.2px}
+    .sub{margin:8px 0 0; color:var(--muted); line-height:1.5}
+    .pill{
+      display:inline-flex; gap:8px; align-items:center; margin-top:12px;
+      padding:8px 10px; border-radius:999px; border:1px solid #ffffff24; background:#00000055;
+      font-size:12px;
+    }
+    .dot{width:8px;height:8px;border-radius:99px;background:linear-gradient(90deg,var(--gold),var(--gold2));box-shadow:0 0 18px #d6b25e66;}
+    .grid{display:grid; gap:10px; margin-top:14px}
+    a.btn{
+      text-decoration:none; color:var(--text);
+      border:1px solid var(--stroke); background:#ffffff10;
+      border-radius:16px; padding:14px;
+      display:flex; justify-content:space-between; align-items:center;
+    }
+    a.btn:hover{background:#ffffff18; transform: translateY(-1px)}
+    .small{color:var(--muted); font-size:12px}
+    .footer{margin-top:12px; text-align:center; color:var(--muted); font-size:12px}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <h1>Batsi Levitan</h1>
+      <p class="sub">I build premium, mobile-first landing pages and digital cards that look amazing on WhatsApp and convert visitors into customers.</p>
+      <div class="pill"><span class="dot"></span>Fast • Clean • High-end</div>
+
+      <div class="grid">
+        <a class="btn" href="#" target="_blank" rel="noreferrer">
+          <span>Portfolio / Landing Page</span>
+          <!-- <span class="small">Add your link</span> -->
+        </a>
+        <a class="btn" href="mailto:batsi1606@gmail.com" target="_blank" rel="noreferrer">
+          <span>Email</span>
+         
+        </a>
+        <a class="btn" href="https://wa.me/0533336724" target="_blank" rel="noreferrer">
+          <span>WhatsApp</span>
+        
+        </a>
+      </div>
+
+      <!-- <div class="footer">© All rights reserved.</div> -->
+    </section>
+  </main>
+</body>
+</html>
